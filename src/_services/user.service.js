@@ -2,7 +2,6 @@
  * Created by alond9990 on 10/09/2018.
  */
 
-import config from 'config';
 import authHeader  from '../_helpers/auth-header';
 
 export const userService = {
@@ -19,7 +18,7 @@ function login(username, password) {
         body: JSON.stringify({ username, password })
     };
 
-    return fetch(`${config.apiUrl}/users/authenticate`, requestOptions)
+    return fetch(`backend_url/users/authenticate`, requestOptions)
         .then(handleResponse)
         .then(user => {
             // login successful if there's a token in the response
@@ -44,7 +43,7 @@ function register(user) {
         body: JSON.stringify(user)
     };
 
-    return fetch(`${config.apiUrl}/users/register`, requestOptions).then(handleResponse);
+    return fetch(`backend_url/users/register`, requestOptions).then(handleResponse);
 }
 
 function handleResponse(response) {
@@ -54,7 +53,7 @@ function handleResponse(response) {
             if (response.status === 401) {
                 // auto logout if 401 response returned from api
                 logout();
-                location.reload(true);
+                window.location.reload(true);
             }
 
             const error = (data && data.message) || response.statusText;

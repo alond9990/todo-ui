@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import HeaderNavbar from './_components/HeaderNavbar';
-import { history } from '../_helpers';
-import { alertActions } from '../_actions';
+import { history } from './_helpers';
+import { alertActions } from './_actions';
 
 import './App.css';
 

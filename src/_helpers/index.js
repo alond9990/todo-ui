@@ -4,3 +4,6 @@
 
 import authHeader from './auth-header';
 export { authHeader as authHeader };
+
+import history from './history';
+export { history as history };

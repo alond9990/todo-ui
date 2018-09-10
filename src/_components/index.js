@@ -3,7 +3,7 @@
  */
 
 import PrivateRoute from './PrivateRoute';
-export { PrivateRoute as PrivateRoute };
-
 import HeaderNavbar from './HeaderNavbar.jsx';
+
+export { PrivateRoute as PrivateRoute };
 export { HeaderNavbar as HeaderNavbar };

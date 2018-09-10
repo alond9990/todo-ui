@@ -3,10 +3,9 @@
  */
 
 import authHeader from './auth-header';
-export { authHeader as authHeader };
-
 import history from './history';
-export { history as history };
-
 import store from './store';
+
+export { authHeader as authHeader };
+export { history as history };
 export { store as store };

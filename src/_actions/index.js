@@ -3,7 +3,7 @@
  */
 
 import alertActions from './alert.actions';
-export { alertActions as alertActions };
-
 import userActions from './user.actions';
+
+export { alertActions as alertActions };
 export { userActions as userActions };

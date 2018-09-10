@@ -3,7 +3,7 @@
  */
 
 import userConstants from './user.constants';
-export { userConstants as userConstants };
-
 import alertConstants from './alert.constants';
+
+export { userConstants as userConstants };
 export { alertConstants as alertConstants };

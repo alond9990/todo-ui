@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import { Router } from 'react-router-dom';
+import { Router, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import HeaderNavbar from './_components/HeaderNavbar';
 import { history } from './_helpers';
 import { alertActions } from './_actions';
+
+import { LoginPage } from './views/LoginPage';
 
 import './App.css';
 
@@ -32,7 +34,7 @@ class App extends Component {
                           }
                       <Router history={history}>
                           <div>
-
+                              <Route path="/login" component={LoginPage} />
                           </div>
                       </Router>
                   </div>

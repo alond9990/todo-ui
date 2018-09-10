@@ -5,11 +5,12 @@
 import config from 'config';
 import authHeader  from '../_helpers/auth-header';
 
-export default userService = {
+export const userService = {
     login,
     logout,
     register
 };
+export default userService;
 
 function login(username, password) {
     const requestOptions = {

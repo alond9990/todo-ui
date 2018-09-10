@@ -2,7 +2,7 @@
  * Created by alond9990 on 10/09/2018.
  */
 
-export default userConstants = {
+export const userConstants = {
     REGISTER_REQUEST: 'USERS_REGISTER_REQUEST',
     REGISTER_SUCCESS: 'USERS_REGISTER_SUCCESS',
     REGISTER_FAILURE: 'USERS_REGISTER_FAILURE',
@@ -13,3 +13,4 @@ export default userConstants = {
 
     LOGOUT: 'USERS_LOGOUT'
 };
+export default userConstants;

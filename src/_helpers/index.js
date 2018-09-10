@@ -7,3 +7,6 @@ export { authHeader as authHeader };
 
 import history from './history';
 export { history as history };
+
+import store from './store';
+export { store as store };

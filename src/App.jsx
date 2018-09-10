@@ -5,8 +5,9 @@ import { connect } from 'react-redux';
 import HeaderNavbar from './_components/HeaderNavbar';
 import { history } from './_helpers';
 import { alertActions } from './_actions';
-
+import { PrivateRoute } from './_components';
 import { LoginPage } from './views/LoginPage';
+import { HomePage } from './views/HomePage';
 
 import './App.css';
 
@@ -34,6 +35,7 @@ class App extends Component {
                           }
                       <Router history={history}>
                           <div>
+                              <PrivateRoute exact path="/" component={HomePage} />
                               <Route path="/login" component={LoginPage} />
                           </div>
                       </Router>

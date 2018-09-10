@@ -5,7 +5,7 @@
 import config from 'config';
 import authHeader  from '../_helpers/auth-header';
 
-export const userService = {
+export default userService = {
     login,
     logout,
     register

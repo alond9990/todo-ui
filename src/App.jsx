@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import { Router, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import HeaderNavbar from './_components/HeaderNavbar';
 import { history } from './_helpers';
 import { alertActions } from './_actions';
-import { PrivateRoute } from './_components';
+import { PrivateRoute, HeaderNavbar } from './_components';
 import { LoginPage } from './views/LoginPage';
 import { HomePage } from './views/HomePage';
 
@@ -34,8 +33,8 @@ class App extends Component {
                       <div className={`alert ${alert.type}`}>{alert.message}</div>
                           }
                       <Router history={history}>
-                          <div>
-                              <PrivateRoute exact path="/" component={HomePage} />
+                          <PrivateRoute exact path="/" component={HomePage} />
+                          <div className="container">
                               <Route path="/login" component={LoginPage} />
                           </div>
                       </Router>

@@ -2,6 +2,7 @@
  * Created by alond9990 on 10/09/2018.
  */
 
+import axios from 'axios';
 import authHeader  from '../_helpers/auth-header';
 
 export const userService = {

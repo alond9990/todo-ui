@@ -6,8 +6,8 @@ class TaskList extends Component {
 
     render() {
         return (
-            <div className="col-sm-12">
-                <div className="card mb-3">
+            <div className="col-sm-12 mb-5">
+                <div className="card">
                     <h4 className="card-header">
                         {this.props.tasklist.name}
                     </h4>

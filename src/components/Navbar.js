@@ -5,7 +5,7 @@ function NavBar() {
     return (
         <nav className="navbar navbar-dark bg-primary fixed-top">
             <Link className="navbar-brand" to="/">
-                Todo
+                To-do App
             </Link>
         </nav>
     );

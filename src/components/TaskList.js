@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Task from './Task'
 
 class TaskList extends Component {
 
@@ -10,7 +11,7 @@ class TaskList extends Component {
                     <ul className="list-group list-group-flush">
                     {
                         this.props.tasklist.tasks.map(task => (
-                            <li key={task.id} className="list-group-item">{task.title}</li>
+                           <Task task={task} />
                         ))
                     }
                     </ul>

@@ -13,6 +13,14 @@ function create(task) {
 }
 
 
+function markAsDone(task_id) {
+    return axios.put(TASKLIST_URL + "/" + task_id + "/done")
+        .then(function (res) {
+            return res.data;
+        });
+}
+
 export default {
-    create: create
+    create: create,
+    markAsDone: markAsDone
 };

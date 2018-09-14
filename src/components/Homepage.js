@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import TaskListApi from '../services/TaskListsAPI'
 
 class Homepage extends Component {
     constructor(props) {
@@ -10,10 +11,11 @@ class Homepage extends Component {
     }
 
     async componentDidMount() {
-        const taskLists = [{"id": 1, "name": "test test"}]; //todo
+        const taskLists = await (TaskListApi.getAll());
         this.setState({
             taskLists,
         });
+
     }
 
     render() {

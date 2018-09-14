@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Task from './Task'
+import NewTask from './NewTask'
 
 class TaskList extends Component {
 
@@ -7,7 +8,9 @@ class TaskList extends Component {
         return (
             <div className="col-sm-12">
                 <div className="card mb-3">
-                    <h4 className="card-header">{this.props.tasklist.name}</h4>
+                    <h4 className="card-header">
+                        {this.props.tasklist.name}
+                    </h4>
                     <ul className="list-group list-group-flush">
                     {
                         this.props.tasklist.tasks.map(task => (
@@ -15,6 +18,9 @@ class TaskList extends Component {
                         ))
                     }
                     </ul>
+                    <div className="card-footer text-muted">
+                        <NewTask tasklistid={this.props.tasklist.id}/>
+                    </div>
                 </div>
             </div>
         )

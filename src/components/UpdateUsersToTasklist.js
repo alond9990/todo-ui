@@ -14,13 +14,6 @@ class UpdateUsersToTasklist extends Component {
         };
     }
 
-    componentWillReceiveProps(nextProps) {
-        this.setState(
-            {
-                selectedUsers: nextProps.tasklist.users.concat(this.props.tasklist.admins)
-            });
-    }
-
     updateSelectedUsers(e) {
         let options = e.target.options;
         let value = [];

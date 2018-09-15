@@ -30,6 +30,7 @@ class NewTask extends Component {
 
         this.setState({
             disabled: false,
+            title: ''
         });
     }
 
@@ -40,6 +41,7 @@ class NewTask extends Component {
                     <input type="text" className="form-control"
                            placeholder="Task Title..." id="newTaskInput"
                            disabled={this.state.disabled}
+                           value={this.state.title}
                            onChange={(e) => {this.updateTitle(e.target.value)}} />
                 </div>
                 <div className="form-group col-sm-2 no-margin-bottom">

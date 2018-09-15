@@ -3,6 +3,7 @@ import {Route} from 'react-router-dom';
 
 import NavBar from './components/Navbar';
 import Homepage from './components/Homepage'
+import Loginpage from './components/Loginpage'
 import './App.css';
 
 class App extends Component {
@@ -11,6 +12,7 @@ class App extends Component {
         <div>
             <NavBar/>
             <Route exact path='/' component={Homepage}/>
+            <Route exact path='/login' component={Loginpage}/>
         </div>
     );
   }

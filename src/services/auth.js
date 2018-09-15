@@ -4,7 +4,7 @@ const BACKEND_URL = 'http://localhost:3000';
 
 class Auth {
     constructor() {
-        this.handleAuthentication = this.handleAuthentication.bind(this);
+        this.getToken = this.getToken.bind(this);
         this.isAuthenticated = this.isAuthenticated.bind(this);
         this.signIn = this.signIn.bind(this);
         this.signOut = this.signOut.bind(this);

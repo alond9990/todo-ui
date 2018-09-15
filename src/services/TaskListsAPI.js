@@ -1,6 +1,7 @@
 import axios from 'axios';
+import config from '../config';
 
-const BACKEND_URL = 'http://localhost:3000';
+const BACKEND_URL = config.BACKEND_URL;
 const TASKLIST_URL = BACKEND_URL + '/task_lists';
 
 function getAll() {

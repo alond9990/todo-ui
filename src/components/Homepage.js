@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import TaskListApi from '../services/TaskListsAPI'
 import TaskList from './TaskList'
+import NewTaskList from './NewTaskList'
 
 class Homepage extends Component {
     constructor(props) {
@@ -25,6 +26,7 @@ class Homepage extends Component {
                 <div className="row">
                     {this.state.taskLists === null && <p>Loading Task Lists...</p>}
                     {this.state.taskLists && this.state.taskLists.length === 0 && <p>You Have No Tasklists...</p>}
+                    <NewTaskList />
                     {
                         this.state.taskLists && this.state.taskLists.map(taskList => (
                            <TaskList tasklist={taskList} />

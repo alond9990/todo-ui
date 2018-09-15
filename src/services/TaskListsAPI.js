@@ -11,7 +11,10 @@ function getAll() {
 }
 
 function create(tasklist) {
-    return axios.post(TASKLIST_URL, tasklist);
+    return axios.post(TASKLIST_URL, tasklist)
+        .then(function(res) {
+            return res.data;
+        });
 }
 
 

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import TaskAPI from '../services/TasksAPI'
 
-class Task extends Component {
+class NewTask extends Component {
 
     constructor(props) {
         super(props);
@@ -52,4 +52,4 @@ class Task extends Component {
     }
 }
 
-export default Task;
+export default NewTask;

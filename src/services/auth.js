@@ -1,3 +1,6 @@
+import axios from 'axios'
+
+const BACKEND_URL = 'http://localhost:3000';
 
 class Auth {
     constructor() {
@@ -7,24 +10,29 @@ class Auth {
         this.signOut = this.signOut.bind(this);
     }
 
-    getIdToken() {
-
-    }
-
-    handleAuthentication() {
-
+    getToken() {
+        try {
+            return JSON.parse(localStorage.getItem('user')).token;
+        } catch (e) {
+            return null
+        }
     }
 
     isAuthenticated() {
 
     }
 
-    signIn() {
-
+    signIn(username, password) {
+        return axios.post(BACKEND_URL, {"username": username, "password": password})
+            .then(function (res) {
+                localStorage.setItem('user', JSON.stringify(res.data));
+                return res.data;
+            });
     }
 
     signOut() {
         // clear id token, profile, and expiration
+        localStorage.removeItem('user');
     }
 }
 

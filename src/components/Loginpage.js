@@ -44,19 +44,19 @@ class Homepage extends Component {
         return (
             <div className="container">
                 <div className="row">
-                    <div className="col-sm-6 col-sm-offset-3">
+                    <div className="col-md-6 col-md-offset-3">
                         <h2>Login</h2>
                         <form name="form" onSubmit={this.handleSubmit}>
                             <div className={'form-group' + (this.state.submitted && !this.state.username ? ' has-error' : '')}>
                                 <input type="text" className="form-control" placeholder="Username" id="usernameInput"
-                                        onChange={this.updateUsername} value={this.state.username} />
+                                        onChange={(e) => {this.updateUsername(e.target.value)}} value={this.state.username} />
                                 {this.state.submitted && !this.state.username &&
                                 <div className="help-block">Username is required</div>
                                 }
                             </div>
                             <div className={'form-group' + (this.state.submitted && !this.state.password ? ' has-error' : '')}>
                                 <input type="text" className="form-control" placeholder="Password" id="passwordInput"
-                                       onChange={this.updatePassword} value={this.state.password} />
+                                       onChange={(e) => {this.updatePassword(e.target.value)}} value={this.state.password} />
                                 {this.state.submitted && !this.state.password &&
                                 <div className="help-block">Password is required</div>
                                 }

@@ -10,6 +10,10 @@ class Auth {
         this.signOut = this.signOut.bind(this);
     }
 
+    setTokenToAxiosDefaults(token) {
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    }
+
     getToken() {
         try {
             return JSON.parse(localStorage.getItem('user')).token;
@@ -23,10 +27,12 @@ class Auth {
     }
 
     signIn(username, password) {
-        return axios.post(BACKEND_URL, {"username": username, "password": password})
+        return axios.post(BACKEND_URL + '/login', {"username": username, "password": password})
             .then(function (res) {
-                localStorage.setItem('user', JSON.stringify(res.data));
-                return res.data;
+                let user = res.data;
+                localStorage.setItem('user', JSON.stringify(user));
+                this.setTokenToAxiosDefaults(user.token);
+                return user;
             });
     }
 

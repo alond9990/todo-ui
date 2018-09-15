@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Route} from 'react-router-dom';
+import SecuredRoute from './components/SecuredRoute';
 
 import NavBar from './components/Navbar';
 import Homepage from './components/Homepage'
@@ -11,7 +12,7 @@ class App extends Component {
     return (
         <div>
             <NavBar/>
-            <Route exact path='/' component={Homepage}/>
+            <SecuredRoute exact path='/' component={Homepage}/>
             <Route exact path='/login' component={Loginpage}/>
         </div>
     );

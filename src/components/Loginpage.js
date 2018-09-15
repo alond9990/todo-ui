@@ -10,11 +10,13 @@ class Homepage extends Component {
         this.state = {
             username: '',
             password: '',
-            submitted: false
+            submitted: false,
+            unauthorized: false
         };
 
         this.updateUsername = this.updateUsername.bind(this);
         this.updatePassword = this.updatePassword.bind(this);
+        this.closeUnauthorized = this.closeUnauthorized.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -30,13 +32,22 @@ class Homepage extends Component {
         });
     }
 
+    closeUnauthorized() {
+        this.setState({
+            unauthorized: false,
+        });
+    }
+
     async handleSubmit(e) {
         e.preventDefault();
 
         this.setState({ submitted: true });
         const { username, password } = this.state;
         if (username && password) {
-            await authClient.signIn(username, password)
+            let user = await authClient.signIn(username, password);
+            if (!user) {
+                this.setState({ unauthorized: true });
+            }
         }
     }
 
@@ -70,6 +81,14 @@ class Homepage extends Component {
                                 <Link to="/register" className="btn btn-link">Register</Link>
                             </div>
                         </form>
+                        {
+                            this.state.unauthorized ?
+                                <div className="alert alert-dismissible alert-danger">
+                                    <button type="button" className="close" data-dismiss="alert"
+                                            onClick={this.closeUnauthorized}>&times;</button>
+                                    <strong>Oh snap!</strong> Username or password is incorrect.
+                                </div> : ''
+                        }
                     </div>
                 </div>
             </div>

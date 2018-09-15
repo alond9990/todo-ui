@@ -62,6 +62,9 @@ class Auth {
                 localStorage.setItem('user', JSON.stringify(user));
                 window.location.reload(); // token is set to defaults after reload
                 return user;
+            })
+            .catch(function(err) {
+                return null;
             });
     }
 

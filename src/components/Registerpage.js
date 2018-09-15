@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Redirect} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import authClient from '../services/auth'
 
 
@@ -10,7 +10,8 @@ class Homepage extends Component {
         this.state = {
             username: '',
             password: '',
-            submitted: false
+            submitted: false,
+            isRegistered: false
         };
 
         this.updateUsername = this.updateUsername.bind(this);
@@ -36,7 +37,11 @@ class Homepage extends Component {
         this.setState({ submitted: true });
         const { username, password } = this.state;
         if (username && password) {
-            await authClient.register(username, password)
+            let isRegistered = await authClient.register(username, password);
+            console.log(isRegistered);
+            this.setState({
+                isRegistered: isRegistered,
+            });
         }
     }
 
@@ -69,6 +74,14 @@ class Homepage extends Component {
                                 <button className="btn btn-primary">Register</button>
                             </div>
                         </form>
+                        {
+                            this.state.isRegistered ?
+                                <div className="alert alert-dismissible alert-success">
+                                    <button type="button" className="close" data-dismiss="alert">&times;</button>
+                                    You registered successfully.
+                                    <Link to="/" className="alert-link">Login</Link>.
+                                </div> : ''
+                        }
                     </div>
                 </div>
             </div>

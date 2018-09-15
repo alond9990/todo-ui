@@ -48,10 +48,10 @@ class Auth {
     register(username, password) {
         return axios.post(BACKEND_URL + '/register', {"username": username, "password": password})
             .then(function (res) {
-                let user = res.data;
-                localStorage.setItem('user', JSON.stringify(user));
-                window.location.reload(); // token is set to defaults after reload
-                return user;
+                return true;
+            })
+            .catch(function(err) {
+                return false;
             });
     }
 

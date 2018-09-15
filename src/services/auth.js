@@ -6,7 +6,7 @@ class Auth {
     constructor() {
         this.setTokenToAxiosDefaults = this.setTokenToAxiosDefaults.bind(this);
         this.getToken = this.getToken.bind(this);
-        this.getUsername = this.getUsername.bind(this);
+        this.getUser = this.getUser.bind(this);
         this.isAuthenticated = this.isAuthenticated.bind(this);
         this.register = this.register.bind(this);
         this.signIn = this.signIn.bind(this);
@@ -31,9 +31,9 @@ class Auth {
         }
     }
 
-    getUsername() {
+    getUser() {
         try {
-            return JSON.parse(localStorage.getItem('user')).username;
+            return JSON.parse(localStorage.getItem('user'));
         } catch (e) {
             return null
         }

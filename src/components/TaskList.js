@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Task from './Task'
 import NewTask from './NewTask'
+import authClient from '../services/auth';
 
 class TaskList extends Component {
 
@@ -18,9 +19,13 @@ class TaskList extends Component {
                         ))
                     }
                     </ul>
-                    <div className="card-footer text-muted">
-                        <NewTask tasklistid={this.props.tasklist.id}/>
-                    </div>
+                    {
+                        // only admins can add new tasks
+                        this.props.tasklist.admins.indexOf(authClient.getUser().id) !== -1 ?
+                        <div className="card-footer text-muted">
+                            <NewTask tasklistid={this.props.tasklist.id}/>
+                        </div> : ''
+                    }
                 </div>
             </div>
         )

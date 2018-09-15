@@ -11,7 +11,7 @@ class Homepage extends Component {
             username: '',
             password: '',
             submitted: false,
-            isRegistered: false
+            isRegistered: null
         };
 
         this.updateUsername = this.updateUsername.bind(this);
@@ -38,7 +38,6 @@ class Homepage extends Component {
         const { username, password } = this.state;
         if (username && password) {
             let isRegistered = await authClient.register(username, password);
-            console.log(isRegistered);
             this.setState({
                 isRegistered: isRegistered,
             });
@@ -77,9 +76,14 @@ class Homepage extends Component {
                         {
                             this.state.isRegistered ?
                                 <div className="alert alert-dismissible alert-success">
-                                    <button type="button" className="close" data-dismiss="alert">&times;</button>
-                                    You registered successfully.
+                                    You have registered successfully.
                                     <Link to="/" className="alert-link">Login</Link>.
+                                </div> : ''
+                        }
+                        {
+                            this.state.isRegistered === false ?
+                                <div className="alert alert-dismissible alert-danger">
+                                    <strong>Oh snap!</strong> Username is taken.
                                 </div> : ''
                         }
                     </div>

@@ -8,16 +8,16 @@ class UpdateUsersToTasklist extends Component {
 
         this.state = {
             disabled: false,
+            taskListAdmins: this.props.tasklist.admins,
             users: this.props.users,
-            existingUsers: this.props.tasklist.users.concat(this.props.tasklist.admins),
-            selectedUsers: []
+            selectedUsers: this.props.tasklist.users.concat(this.props.tasklist.admins)
         };
     }
 
     componentWillReceiveProps(nextProps) {
         this.setState(
             {
-                existingUsers: nextProps.tasklist.users.concat(this.props.tasklist.admins)
+                selectedUsers: nextProps.tasklist.users.concat(this.props.tasklist.admins)
             });
     }
 
@@ -25,7 +25,7 @@ class UpdateUsersToTasklist extends Component {
         let options = e.target.options;
         let value = [];
         for (let i = 0, len = options.length; i < len; i++) {
-            if (options[i].selected) {
+            if (options[i].selected || options[i].disabled) { //disabled is for admins
                 let userId = parseInt(e.target.options[i].value, 10);
                 value.push(userId);
             }
@@ -56,10 +56,11 @@ class UpdateUsersToTasklist extends Component {
                             placeholder="Authorized Users..."
                             disabled={this.state.disabled}
                             onChange={(e) => {this.updateSelectedUsers(e)}}
-                            defaultValue={this.state.existingUsers}>
+                            value={this.state.selectedUsers}>
                         {
                             this.state.users && this.state.users.map(user => (
-                                <option key={user.id} value={user.id}>
+                                <option key={user.id} value={user.id}
+                                        disabled={this.state.taskListAdmins.indexOf(user.id) !== -1}>
                                     {user.username}
                                 </option>
                             ))

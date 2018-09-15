@@ -4,10 +4,18 @@ const BACKEND_URL = 'http://localhost:3000';
 
 class Auth {
     constructor() {
+        this.setTokenToAxiosDefaults = this.setTokenToAxiosDefaults.bind(this);
         this.getToken = this.getToken.bind(this);
+        this.getUsername = this.getUsername.bind(this);
         this.isAuthenticated = this.isAuthenticated.bind(this);
         this.signIn = this.signIn.bind(this);
         this.signOut = this.signOut.bind(this);
+
+        let token = this.getToken();
+        if (token) {
+            // todo: add verify token
+            this.setTokenToAxiosDefaults(token);
+        }
     }
 
     setTokenToAxiosDefaults(token) {
@@ -22,7 +30,17 @@ class Auth {
         }
     }
 
+    getUsername() {
+        try {
+            return JSON.parse(localStorage.getItem('user')).username;
+        } catch (e) {
+            return null
+        }
+    }
+
     isAuthenticated() {
+        let token = this.getToken();
+        return !!token;
 
     }
 
@@ -31,7 +49,7 @@ class Auth {
             .then(function (res) {
                 let user = res.data;
                 localStorage.setItem('user', JSON.stringify(user));
-                this.setTokenToAxiosDefaults(user.token);
+                window.location.reload(); // token is set to defaults after reload
                 return user;
             });
     }

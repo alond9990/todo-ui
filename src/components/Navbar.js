@@ -7,6 +7,7 @@ function NavBar(props) {
     const signOut = () => {
         authClient.signOut();
         props.history.replace('/');
+        window.location.reload();
     };
 
     return (
@@ -16,12 +17,12 @@ function NavBar(props) {
             </Link>
             {
                 !authClient.isAuthenticated() &&
-                <button className="btn btn-dark" onClick={authClient.signIn}>Sign In</button>
+                <Link className="btn btn-dark" to="/login">Sign In</Link>
             }
             {
                 authClient.isAuthenticated() &&
                 <div>
-                    <label className="mr-2 text-white">{authClient.getProfile().name}</label>
+                    <label className="mr-2 text-white">{authClient.getUsername()}</label>
                     <button className="btn btn-dark" onClick={() => {signOut()}}>Sign Out</button>
                 </div>
             }

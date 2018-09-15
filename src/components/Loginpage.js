@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import authClient from '../services/auth'
 
 
@@ -43,6 +43,10 @@ class Homepage extends Component {
     render() {
         return (
             <div className="container">
+                {
+                    authClient.isAuthenticated() ?
+                        <Redirect to={{ pathname: '/', state: { from: this.props.location } }} /> : ''
+                }
                 <div className="row">
                     <div className="col-md-6 col-md-offset-3">
                         <h2>Login</h2>

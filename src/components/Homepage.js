@@ -24,6 +24,7 @@ class Homepage extends Component {
             <div className="container">
                 <div className="row">
                     {this.state.taskLists === null && <p>Loading Task Lists...</p>}
+                    {this.state.taskLists && this.state.taskLists.length === 0 && <p>You Have No Tasklists...</p>}
                     {
                         this.state.taskLists && this.state.taskLists.map(taskList => (
                            <TaskList tasklist={taskList} />

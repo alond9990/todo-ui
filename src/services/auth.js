@@ -8,6 +8,7 @@ class Auth {
         this.getToken = this.getToken.bind(this);
         this.getUsername = this.getUsername.bind(this);
         this.isAuthenticated = this.isAuthenticated.bind(this);
+        this.register = this.register.bind(this);
         this.signIn = this.signIn.bind(this);
         this.signOut = this.signOut.bind(this);
 
@@ -42,6 +43,16 @@ class Auth {
         let token = this.getToken();
         return !!token;
 
+    }
+
+    register(username, password) {
+        return axios.post(BACKEND_URL + '/register', {"username": username, "password": password})
+            .then(function (res) {
+                let user = res.data;
+                localStorage.setItem('user', JSON.stringify(user));
+                window.location.reload(); // token is set to defaults after reload
+                return user;
+            });
     }
 
     signIn(username, password) {

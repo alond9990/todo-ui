@@ -15,11 +15,9 @@ class Auth {
 
         let token = this.getToken();
         if (token) {
+            this.setTokenToAxiosDefaults(token);
             let isValid = this.verifyToken(token);
-            if (isValid) {
-                this.setTokenToAxiosDefaults(token);
-            }
-            else {
+            if (!isValid) {
                 this.signOut();
             }
         }

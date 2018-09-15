@@ -8,6 +8,7 @@ class UpdateUsersToTasklist extends Component {
 
         this.state = {
             disabled: false,
+            existingUsers: this.props.tasklist.users.concat(this.props.tasklist.admins),
             selectedUsers: []
         };
     }
@@ -21,11 +22,9 @@ class UpdateUsersToTasklist extends Component {
                 value.push(userId);
             }
         }
-
         this.setState({
             selectedUsers: value
         });
-        console.log(this.state.selectedUsers);
     }
 
     async submit() {
@@ -49,7 +48,7 @@ class UpdateUsersToTasklist extends Component {
                             placeholder="Authorized Users..."
                             disabled={this.state.disabled}
                             onChange={(e) => {this.updateSelectedUsers(e)}}
-                            defaultValue={this.props.tasklist.admins}> //todo change to users
+                            defaultValue={this.state.existingUsers}>
                         {
                             this.props.users && this.props.users.map(user => (
                                 <option key={user.id} value={user.id}>

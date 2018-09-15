@@ -29,6 +29,7 @@ class NewTaskList extends Component {
 
         this.setState({
             disabled: false,
+            name: ''
         });
     }
 
@@ -40,6 +41,7 @@ class NewTaskList extends Component {
                         <input type="text" className="form-control"
                                placeholder="Task List Name..." id="newTaskListNameInput"
                                disabled={this.state.disabled}
+                               value={this.state.name}
                                onChange={(e) => {this.updateName(e.target.value)}} />
                     </div>
                     <div className="form-group col-sm-2 no-margin-bottom">

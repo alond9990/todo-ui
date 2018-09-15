@@ -18,7 +18,7 @@ function create(tasklist) {
 }
 
 function updateUsers(taskListId, user_ids) {
-    return axios.put(TASKLIST_URL + '/' + taskListId + '/grant_permission', user_ids)
+    return axios.put(TASKLIST_URL + '/' + taskListId + '/users', user_ids)
         .then(function(res) {
             return res.data;
         });

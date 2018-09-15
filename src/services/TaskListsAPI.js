@@ -17,8 +17,16 @@ function create(tasklist) {
         });
 }
 
+function grantPermission(taskListId, user_ids) {
+    return axios.post(TASKLIST_URL + '/' + taskListId + '/grant_permission', user_ids)
+        .then(function(res) {
+            return res.data;
+        });
+}
+
 
 export default {
     getAll: getAll,
-    create: create
+    create: create,
+    grantPermission: grantPermission
 };

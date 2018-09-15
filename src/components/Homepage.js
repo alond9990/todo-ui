@@ -33,7 +33,7 @@ class Homepage extends Component {
                     <NewTaskList />
                     {
                         this.state.taskLists && this.state.taskLists.map(taskList => (
-                           <TaskList tasklist={taskList} />
+                           <TaskList key={taskList.id} tasklist={taskList} users={this.state.users} />
                         ))
                     }
                 </div>

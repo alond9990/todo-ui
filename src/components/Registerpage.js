@@ -64,7 +64,7 @@ class Homepage extends Component {
                                 }
                             </div>
                             <div className={'form-group' + (this.state.submitted && !this.state.password ? ' has-error' : '')}>
-                                <input type="text" className="form-control" placeholder="Password" id="passwordInput"
+                                <input type="password" className="form-control" placeholder="Password" id="passwordInput"
                                        onChange={(e) => {this.updatePassword(e.target.value)}} value={this.state.password} />
                                 {this.state.submitted && !this.state.password &&
                                 <div className="help-block">Password is required</div>

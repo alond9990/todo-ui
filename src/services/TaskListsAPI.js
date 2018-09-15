@@ -17,8 +17,8 @@ function create(tasklist) {
         });
 }
 
-function grantPermission(taskListId, user_ids) {
-    return axios.post(TASKLIST_URL + '/' + taskListId + '/grant_permission', user_ids)
+function updateUsers(taskListId, user_ids) {
+    return axios.put(TASKLIST_URL + '/' + taskListId + '/grant_permission', user_ids)
         .then(function(res) {
             return res.data;
         });
@@ -28,5 +28,5 @@ function grantPermission(taskListId, user_ids) {
 export default {
     getAll: getAll,
     create: create,
-    grantPermission: grantPermission
+    updateUsers: updateUsers
 };

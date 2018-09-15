@@ -8,7 +8,7 @@ class UpdateUsersToTasklist extends Component {
 
         this.state = {
             disabled: false,
-            selectedUsers: ''
+            selectedUsers: []
         };
     }
 
@@ -23,8 +23,9 @@ class UpdateUsersToTasklist extends Component {
         }
 
         this.setState({
-            selectedUsers: value,
+            selectedUsers: value
         });
+        console.log(this.state.selectedUsers);
     }
 
     async submit() {
@@ -32,7 +33,8 @@ class UpdateUsersToTasklist extends Component {
             disabled: true,
         });
 
-        await TaskListsAPI.grantPermission(this.props.tasklist.id , this.state.selectedUsers);
+        await TaskListsAPI.updateUsers(this.props.tasklist.id ,
+            {"user_ids": this.state.selectedUsers});
 
         this.setState({
             disabled: false,
@@ -59,7 +61,7 @@ class UpdateUsersToTasklist extends Component {
                 </div>
                 <div className="form-group col-sm-2 no-margin-bottom">
                     <button type="submit" className="btn btn-success"
-                            disabled={this.state.disabled || !this.state.selectedUsers}
+                            disabled={this.state.disabled || this.state.selectedUsers.length === 0}
                             onClick={() => {this.submit()}}>Update Users</button>
                 </div>
             </form>

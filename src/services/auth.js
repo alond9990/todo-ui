@@ -5,6 +5,7 @@ const BACKEND_URL = 'http://localhost:3000';
 class Auth {
     constructor() {
         this.setTokenToAxiosDefaults = this.setTokenToAxiosDefaults.bind(this);
+        this.verifyToken = this.verifyToken.bind(this);
         this.getToken = this.getToken.bind(this);
         this.getUser = this.getUser.bind(this);
         this.isAuthenticated = this.isAuthenticated.bind(this);
@@ -14,13 +15,28 @@ class Auth {
 
         let token = this.getToken();
         if (token) {
-            // todo: add verify token
-            this.setTokenToAxiosDefaults(token);
+            let isValid = this.verifyToken(token);
+            if (isValid) {
+                this.setTokenToAxiosDefaults(token);
+            }
+            else {
+                this.signOut();
+            }
         }
     }
 
     setTokenToAxiosDefaults(token) {
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    }
+
+    verifyToken(token) {
+        return axios.get(BACKEND_URL + '/verify')
+            .then(function (res) {
+                return true;
+            })
+            .catch(function(err) {
+                return false;
+            });
     }
 
     getToken() {

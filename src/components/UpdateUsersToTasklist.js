@@ -8,9 +8,17 @@ class UpdateUsersToTasklist extends Component {
 
         this.state = {
             disabled: false,
+            users: this.props.users,
             existingUsers: this.props.tasklist.users.concat(this.props.tasklist.admins),
             selectedUsers: []
         };
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.setState(
+            {
+                existingUsers: nextProps.tasklist.users.concat(this.props.tasklist.admins)
+            });
     }
 
     updateSelectedUsers(e) {
@@ -32,7 +40,7 @@ class UpdateUsersToTasklist extends Component {
             disabled: true,
         });
 
-        await TaskListsAPI.updateUsers(this.props.tasklist.id ,
+        await TaskListsAPI.updateUsers(this.props.tasklist.id,
             {"user_ids": this.state.selectedUsers});
 
         this.setState({
@@ -50,7 +58,7 @@ class UpdateUsersToTasklist extends Component {
                             onChange={(e) => {this.updateSelectedUsers(e)}}
                             defaultValue={this.state.existingUsers}>
                         {
-                            this.props.users && this.props.users.map(user => (
+                            this.state.users && this.state.users.map(user => (
                                 <option key={user.id} value={user.id}>
                                     {user.username}
                                 </option>

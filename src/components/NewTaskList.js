@@ -24,7 +24,7 @@ class NewTaskList extends Component {
         });
 
         await TaskListAPI.create({
-            "name": this.state.title
+            "name": this.state.name
         });
 
         this.setState({
@@ -44,7 +44,7 @@ class NewTaskList extends Component {
                     </div>
                     <div className="form-group col-sm-2 no-margin-bottom">
                         <button type="submit" className="btn btn-success"
-                                disabled={this.state.disabled || !this.state.title}
+                                disabled={this.state.disabled || !this.state.name}
                                 onClick={() => {this.submit()}}>Add Task List</button>
                     </div>
                 </form>

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import TaskListApi from '../services/TaskListsAPI'
+import UsersApi from '../services/UsersAPI'
 import TaskList from './TaskList'
 import NewTaskList from './NewTaskList'
 
@@ -9,13 +10,16 @@ class Homepage extends Component {
 
         this.state = {
             taskLists: null,
+            users: null
         };
     }
 
     async componentDidMount() {
         const taskLists = await (TaskListApi.getAll());
+        const users = await (UsersApi.getAll());
         this.setState({
             taskLists,
+            users
         });
 
     }

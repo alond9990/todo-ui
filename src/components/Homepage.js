@@ -22,6 +22,18 @@ class Homepage extends Component {
             users
         });
 
+        // update task lists realtime
+        let _this = this;
+        this.taskListInterval = setInterval(async function() {
+            _this.setState({
+                taskLists: await (TaskListApi.getAll())
+            });
+        }, 1000);
+
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.taskListInterval);
     }
 
     render() {

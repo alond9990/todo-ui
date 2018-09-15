@@ -21,8 +21,8 @@ class Task extends Component {
     componentWillReceiveProps(nextProps) {
         this.setState(
             {
-                label_id: 'task-label-' + this.props.task.id,
-                task_done: this.props.task.done
+                label_id: 'task-label-' + nextProps.task.id,
+                task_done: nextProps.task.done
             });
     }
 

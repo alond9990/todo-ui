@@ -11,12 +11,18 @@ class Task extends Component {
 
 
     componentWillMount() {
-        const label_id = 'task-label-' + this.props.task.id;
-        let task_done = this.props.task.done;
         this.setState(
             {
-                label_id: label_id,
-                task_done: task_done
+                label_id: 'task-label-' + this.props.task.id,
+                task_done: this.props.task.done
+            });
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.setState(
+            {
+                label_id: 'task-label-' + this.props.task.id,
+                task_done: this.props.task.done
             });
     }
 
